@@ -55,4 +55,13 @@ public class Course {
         this.courseName = courseName;
     }
 
+    public void addEnrollment(Enrollment e){
+        this.enrollments.add(e);
+        e.setCourse(this);
+    }
+
+    public void removeEnrollment(Enrollment e){
+        this.enrollments.remove(e);
+        e.setCourse(null);
+    }
 }
