@@ -29,12 +29,24 @@ public class Enrollment {
     @Column(nullable = false)
     private boolean active = true;
 
+    // Setters
     public void setStudent(Student student){
         this.student = student;
     }
 
     public void setCourse(Course course){
         this.course = course;
+    }
+
+    public void setEnrollmentDate(LocalDateTime enrollmentDate){
+        if (enrollmentDate == null){
+            throw new IllegalArgumentException("Enrollment date cannot be null");
+        }
+        this.enrollmentDate = enrollmentDate;
+    }
+
+    public void setActive(boolean active){
+        this.active = active;
     }
 
 }
