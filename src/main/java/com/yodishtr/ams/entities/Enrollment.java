@@ -49,4 +49,25 @@ public class Enrollment {
         this.active = active;
     }
 
+    // Getters
+    public Long getId(){
+        return this.id;
+    }
+
+    public LocalDateTime getEnrollmentDate(){
+        return this.enrollmentDate;
+    }
+
+    public Student getStudent(){
+        return this.student;
+    }
+
+    public Course getCourse(){
+        return this.course;
+    }
+
+    public boolean isActive(){
+        return this.active;
+    }
+
 }

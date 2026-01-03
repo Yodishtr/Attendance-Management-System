@@ -42,7 +42,6 @@ public class Student {
 
     public void removeEnrollment(Enrollment e){
         this.enrollments.remove(e);
-        e.setStudent(null);
     }
 
     // Getters

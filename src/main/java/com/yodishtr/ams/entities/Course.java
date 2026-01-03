@@ -62,6 +62,5 @@ public class Course {
 
     public void removeEnrollment(Enrollment e){
         this.enrollments.remove(e);
-        e.setCourse(null);
     }
 }
