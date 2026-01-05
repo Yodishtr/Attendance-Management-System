@@ -21,7 +21,9 @@ public class Student {
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Enrollment> enrollments = new ArrayList<>();
 
+    @Column(nullable = false, unique = true)
     private String email;
+
     private Integer phone;
     private String address;
 

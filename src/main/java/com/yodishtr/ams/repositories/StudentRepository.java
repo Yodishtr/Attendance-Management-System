@@ -16,7 +16,9 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     Optional<Student> findByAddress(String address);
     List<Student> findByFullName(String fullname);
     List<Student> findByAge(Integer age);
-    boolean existsByFullName(@Param("fullname")String fullname);
+    boolean existsByFullName(String fullname);
+    boolean existsByEmail(String email);
+    Optional<Student> findByEmailAndFullName(String email, String fullname);
 
     @Query("""
             select s 
