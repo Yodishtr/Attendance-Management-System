@@ -52,6 +52,8 @@ public class StudentService {
         if (email != null && !email.equals(currStudent.getEmail()) && !email.isBlank()){
             if (!studentRepository.existsByEmail(email)) {
                 currStudent.setEmail(email);
+            } else {
+                throw new IllegalArgumentException("Email already exists");
             }
         }
         if (phone != null && !phone.equals(currStudent.getPhone())){

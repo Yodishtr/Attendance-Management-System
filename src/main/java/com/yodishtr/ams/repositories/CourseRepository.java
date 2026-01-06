@@ -10,8 +10,9 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
 
     Optional<Course> findByCourseCode(String courseCode);
     boolean existsByCourseCode(String courseCode);
-    Optional<Course> finfByCourseName(String courseName);
+    Optional<Course> findByCourseName(String courseName);
     boolean existsByCourseName(String courseName);
+    Optional<Course> findById(Long courseId);
 
     @EntityGraph(attributePaths = {"enrollments", "enrollments.student"})
     Optional<Course> findWithEnrollmentsById(Long course_id);
