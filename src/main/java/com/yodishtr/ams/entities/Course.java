@@ -22,7 +22,7 @@ public class Course {
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Enrollment> enrollments = new ArrayList<>();
 
-    public Course(){}
+    protected Course(){}
 
     public Course(String courseCode, String courseName){
         this.courseCode = courseCode;

@@ -29,6 +29,14 @@ public class Enrollment {
     @Column(nullable = false)
     private boolean active = true;
 
+    protected Enrollment(){}
+
+    public Enrollment(Student student, Course course){
+        this.student = student;
+        this.course = course;
+        this.enrollmentDate = LocalDateTime.now();
+    }
+
     // Setters
     public void setStudent(Student student){
         this.student = student;
