@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html xlmns: th="http://www.thymeleaf.org">
+
+<head>
+    <h1>Students</h1>
+</head>
+
+<body>
+    <h2>Students</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="s : ${students}">
+                <td th:text="${s.id}"></td>
+                <td th:text="${s.fullName}"></td>
+                <td th:text="${s.email}"></td>
+                <td>
+                    <a th:href="@{/students/{id}(id=${s.id})}">Details</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><a th:href="@{/courses}">Browse Courses</a></p>
+</body>
+
+</html>

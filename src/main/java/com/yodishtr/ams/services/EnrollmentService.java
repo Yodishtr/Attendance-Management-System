@@ -37,7 +37,7 @@ public class EnrollmentService {
         Optional<Enrollment> potentialEnrollment = enrollmentRepository.findByStudentIdAndCourseId(studentId, courseId);
         if (potentialEnrollment.isPresent()){
             Enrollment currEnrollment = potentialEnrollment.get();
-            if (!currEnrollment.isActive()){
+            if (currEnrollment.isActive()){
                 throw new IllegalArgumentException("Enrollment with id " + currEnrollment.getId() +
                         " is already active");
             } else {
