@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Student Details</title>
+    </head>
+    <body>
+        <h1>Student Details</h1>
+        <div th:if="${successMessage}">
+            <p th:text="${successMessage}" style="color: green;"></p>
+        </div>
+        <div th:if="${errorMessage}">
+            <p th:text="${errorMessage}" style="color: red;"></p>
+        </div>
+        <h2 th:text="${student.fullName}"></h2>
+        <p><strong>ID:</strong><span th:text="${student.id}"></span></p>
+        <p><strong>Email:</strong><span th:text="${student.email}"></span></p>
+
+        <hr/>
+        <h2>Enroll in a course</h2>
+        <form th:action="@{/enrollments}" method="post">
+            <input type="hidden" name="studentId" th:value="${student.id}"/>
+            <label for="courseId">Course</label>
+            <select id="courseId" name="courseId" required>
+                <option value="" disabled selected>Select A Course</option>
+                <option th:each="c : ${courses}"
+                        th:value="${c.id}"
+                        th:text="${c.courseName + ' - ' + c.courseCode}">
+                </option>
+            </select>
+            <button type="submit">Enroll</button>
+        </form>
+        <hr/>
+        <h2>Current Enrollment</h2>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Enrolled At</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="e : ${student.enrollments}">
+                    <td th:text="${e.course.courseCode}"></td>
+                    <td th:text="${e.course.courseName}"></td>
+                    <td th:text="${e.enrollmentDate}"></td>
+                    <td th:text="${e.active? 'Active' : 'Inactive' }"></td>
+                    <td>
+                        <form th:if="${e.active}" th:action="@{/enrollments/{id}/deactivate(id=${e.id})}"
+                        method="post">
+                            <input type="hidden" name="studentId" th:value="${student.id}"/>
+                            <button type="submit">Drop</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><a th:href="@{/students}">Back to Students</a></p>
+    </body>
+
+</html>

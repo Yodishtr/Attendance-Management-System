@@ -24,7 +24,7 @@ public class CourseController {
     @GetMapping("/{courseId}")
     public String courseDetails(@PathVariable Long courseId, Model model){
         model.addAttribute("course", courseService.getCourseWithEnrollmentById(courseId));
-        return "course/details";
+        return "course/detail";
     }
 
 

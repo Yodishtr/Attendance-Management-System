@@ -21,9 +21,9 @@ public class EnrollmentController {
     public String enroll(@RequestParam Long studentId, @RequestParam Long courseId, RedirectAttributes redirectAttributes){
         try {
             enrollmentService.createEnrollment(studentId, courseId);
-            redirectAttributes.addFlashAttribute("success message", "Enrollment Successful");
+            redirectAttributes.addFlashAttribute("successMessage", "Enrollment Successful");
         } catch (Exception e){
-            redirectAttributes.addFlashAttribute("error message", e.getMessage());
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
         }
         return "redirect:/students/" + studentId;
     }
@@ -32,9 +32,9 @@ public class EnrollmentController {
     public String deactivateEnrollment(@PathVariable Long enrollmentId, @RequestParam Long studentId, RedirectAttributes redirectAttributes){
         try {
             enrollmentService.deactivateEnrollment(enrollmentId);
-            redirectAttributes.addFlashAttribute("success message", "Enrollment deactivated");
+            redirectAttributes.addFlashAttribute("successMessage", "Enrollment deactivated");
         } catch (IllegalArgumentException e){
-            redirectAttributes.addFlashAttribute("error message", e.getMessage());
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
         }
         return "redirect:/students/" + studentId;
     }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <h1>Course Details</h1>
+    </head>
+    <body>
+        <h1>Course Details</h1>
+        <p><strong>Course Code:</strong><span th:text="${course.courseCode}"></span></p>
+        <p><strong>Course Name:</strong><span th:text="${course.courseName}"></span></p>
+        <hr/>
+        <h2>Roster</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Email</th>
+                    <th>Enrolled At</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="e : ${course.enrollments}">
+                    <td th:text="${e.student.fullName}"></td>
+                    <td th:text="${e.student.email}"></td>
+                    <td th:text="${e.enrollmentDate}"></td>
+                    <td th:text="${e.active? 'Active' : 'Inactive'}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <p><a th:href="@{/courses}">Back to Courses</a></p>
+    </body>
+</html>

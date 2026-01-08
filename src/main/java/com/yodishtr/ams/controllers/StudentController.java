@@ -30,7 +30,7 @@ public class StudentController {
     public String studentDetails(@PathVariable Long studentId, Model model){
         model.addAttribute("student", studentService.getStudentById(studentId));
         model.addAttribute("courses", courseService.getAllCourses());
-        return "student/details";
+        return "student/detail";
     }
 
 
